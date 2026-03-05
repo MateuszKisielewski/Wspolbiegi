@@ -1,0 +1,10 @@
+# All unwanted files
+.DS_Store
+*.exe
+.idea
+.thumbs
+.vscode
+.venv
+__pycache__
+*.pyc
+*.pyo
