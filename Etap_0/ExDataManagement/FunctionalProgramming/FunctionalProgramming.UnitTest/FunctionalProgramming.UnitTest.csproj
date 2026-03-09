@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>TP.ExDM.FunctionalProgramming</RootNamespace>
+    <AssemblyName>TP.ExDM.FunctionalProgramming.UnitTest</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <NoWarn>IDE0001,IDE0002,IDE0003</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyTitle>FunctionalProgramming.UnitTest</AssemblyTitle>
+    <Product>FunctionalProgramming.UnitTest</Product>
+    <Copyright>Copyright %28c%29 2020 Mariusz Postol</Copyright>
+    <AssemblyVersion>4.1.0.%2a</AssemblyVersion>
+    <FileVersion>4.1.0.0</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FunctionalProgramming\FunctionalProgramming.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.23.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
+    <PackageReference Include="Microsoft.Testing.Extensions.Telemetry" Version="1.6.3" />
+    <PackageReference Include="Microsoft.Testing.Extensions.TrxReport.Abstractions" Version="1.6.3" />
+    <PackageReference Include="Microsoft.Testing.Extensions.VSTestBridge" Version="1.6.3" />
+    <PackageReference Include="Microsoft.Testing.Platform" Version="1.6.3" />
+    <PackageReference Include="Microsoft.Testing.Platform.MSBuild" Version="1.6.3" />
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.13.0" />
+    <PackageReference Include="MSTest.Analyzers" Version="3.8.3" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.8.3" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.8.3" />
+    <PackageReference Include="NuGet.Frameworks" Version="6.13.2" />
+    <PackageReference Include="System.Collections.Immutable" Version="9.0.3" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.3" />
+    <PackageReference Include="System.Reflection.Metadata" Version="9.0.3" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.4" />
+  </ItemGroup>
+</Project>

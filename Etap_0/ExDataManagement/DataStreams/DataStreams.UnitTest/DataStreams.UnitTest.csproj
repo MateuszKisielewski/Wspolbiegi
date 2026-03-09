@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>TP.ExDM.DataStreams</RootNamespace>
+    <AssemblyName>TP.ExDM.DataStreams.UnitTest</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <NoWarn>IDE0001;IDE0002;IDE0003</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyTitle>DataStreams.UnitTest</AssemblyTitle>
+    <Product>DataStreams.UnitTest</Product>
+    <Copyright>Copyright %28c%29 2020 Mariusz Postol</Copyright>
+    <AssemblyVersion>4.1.0.%2a</AssemblyVersion>
+    <FileVersion>4.1.0.0</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Instrumentation\Catalog.cs">
+      <DependentUpon>Catalog.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Instrumentation\Catalog.xsd.cs">
+      <DependentUpon>Catalog.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Instrumentation\Catalog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataStreams\DataStreams.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Instrumentation\catalog.example.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Instrumentation\Catalog.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <Content Include="Instrumentation\decryptedXmlFile.xml" />
+    <Content Include="Instrumentation\encryptedXmlFile.xml" />
+    <Content Include="Instrumentation\SignedXmlFile.xml" />
+    <None Update="Instrumentation\PubliKey.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Instrumentation\PubliPrivateKeys.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.23.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="Microsoft.Testing.Extensions.Telemetry" Version="1.6.3" />
+    <PackageReference Include="Microsoft.Testing.Extensions.TrxReport.Abstractions" Version="1.6.3" />
+    <PackageReference Include="Microsoft.Testing.Extensions.VSTestBridge" Version="1.6.3" />
+    <PackageReference Include="Microsoft.Testing.Platform" Version="1.6.3" />
+    <PackageReference Include="Microsoft.Testing.Platform.MSBuild" Version="1.6.3" />
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.13.0" />
+    <PackageReference Include="MSTest.Analyzers" Version="3.8.3" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.8.3" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.8.3" />
+    <PackageReference Include="NuGet.Frameworks" Version="6.13.2" />
+    <PackageReference Include="System.Collections.Immutable" Version="9.0.4" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.4" />
+    <PackageReference Include="System.Reflection.Metadata" Version="9.0.4" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.4" />
+  </ItemGroup>
+</Project>

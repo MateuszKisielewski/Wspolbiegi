@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <RootNamespace>PartialDefinitionsTest</RootNamespace>
+        <AssemblyName>PartialDefinitionsTest</AssemblyName>
+    </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <AssemblyTitle>PartialDefinitionsTest</AssemblyTitle>
+        <Description>Partial Definitions Test Project</Description>
+        <Company>MPostol</Company>
+        <Product>Programming in Practice - Information Computation</Product>
+        <Copyright>Copyright 2023 Mariusz Postol</Copyright>
+        <AssemblyVersion>5.0.0.0</AssemblyVersion>
+        <FileVersion>5.0.0.0</FileVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\PartialDefinitions\51-PartialDefinitions.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
+        <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
+        <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
+    </ItemGroup>
+</Project>
