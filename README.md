@@ -4,5 +4,5 @@
 
 | Name Surname (initials) | GUID                                     |
 | ----------------------- | ---------------------------------------- |
-| MK                      | `{FD9D086C-532F-4AAC-BB99-69D7798837D8}` |
-| Krzysztof Kata          | `{44FBFCF5-4430-4964-878D-1867DC679E0D}` |
+| MK                      | `{27C34144-8E24-45EC-B0F8-A5EDC31CDCEB}` |
+| Krzysztof Kata          | `{}` |
