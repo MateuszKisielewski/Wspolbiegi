@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright (C) 2024, Mariusz Postol LODZ POLAND")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("6.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("6.0.0+0b0ab292483ca333a4af5cd00d5005757a4413ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("6.0.0+9f7555d4d0aecc4ef3b6c081b5c3c6e179d98ebe")]
 [assembly: System.Reflection.AssemblyProductAttribute("Programming in Practice")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TP.ExDM.GraphicalData.Model")]
 [assembly: System.Reflection.AssemblyVersionAttribute("6.0.0.0")]

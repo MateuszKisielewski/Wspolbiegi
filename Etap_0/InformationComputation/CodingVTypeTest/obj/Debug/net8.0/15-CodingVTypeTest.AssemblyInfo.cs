@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("15-CodingVTypeTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b0ab292483ca333a4af5cd00d5005757a4413ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f7555d4d0aecc4ef3b6c081b5c3c6e179d98ebe")]
 [assembly: System.Reflection.AssemblyProductAttribute("15-CodingVTypeTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("15-CodingVTypeTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
