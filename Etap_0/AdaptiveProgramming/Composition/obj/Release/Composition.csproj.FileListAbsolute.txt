@@ -1,8 +1,0 @@
-C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Composition\bin\Release\TPA.Composition.dll
-C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Composition\bin\Release\TPA.Composition.pdb
-C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Composition\bin\Release\CommonServiceLocator.dll
-C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Composition\obj\Release\Composition.csproj.AssemblyReference.cache
-C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Composition\obj\Release\Composition.csproj.CoreCompileInputs.cache
-C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Composition\obj\Release\Composit.F52BD608.Up2Date
-C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Composition\obj\Release\TPA.Composition.dll
-C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Composition\obj\Release\TPA.Composition.pdb

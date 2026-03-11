@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MPostol")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("6.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("6.0.0+cf53ba07a53911527448f96f277e8737faf4170a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("6.0.0+0b0ab292483ca333a4af5cd00d5005757a4413ec")]
 [assembly: System.Reflection.AssemblyProductAttribute("TP.ExDM.GraphicalData.View")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TP.ExDM.GraphicalData.View")]
 [assembly: System.Reflection.AssemblyVersionAttribute("6.0.0.0")]

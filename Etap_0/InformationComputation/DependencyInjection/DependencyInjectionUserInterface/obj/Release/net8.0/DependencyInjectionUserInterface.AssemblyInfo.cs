@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DependencyInjectionUserInterface")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf53ba07a53911527448f96f277e8737faf4170a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b0ab292483ca333a4af5cd00d5005757a4413ec")]
 [assembly: System.Reflection.AssemblyProductAttribute("DependencyInjectionUserInterface")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DependencyInjectionUserInterface")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
