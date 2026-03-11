@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C8ERdkP43+0=",
+  "dgSpecHash": "lJ6UlQM1U1o=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Krzysztof Kata\\Desktop\\ConcurrentProgramming\\ReactiveInteractiveUserInterface\\PresentationModelTest\\PresentationModelTest.csproj",
+  "projectFilePath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ConcurrentProgramming\\ReactiveInteractiveUserInterface\\PresentationModelTest\\PresentationModelTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Krzysztof Kata\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\Krzysztof Kata\\.nuget\\packages\\microsoft.applicationinsights\\2.22.0\\microsoft.applicationinsights.2.22.0.nupkg.sha512",
