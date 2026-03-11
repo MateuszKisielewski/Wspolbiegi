@@ -1,0 +1,13 @@
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\bin\Debug\net8.0\TPD.AsynchronousProgramming.deps.json
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\bin\Debug\net8.0\TPD.AsynchronousProgramming.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\bin\Debug\net8.0\TPD.AsynchronousProgramming.pdb
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\AsynchronousLibrary.csproj.AssemblyReference.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\AsynchronousLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\AsynchronousLibrary.AssemblyInfoInputs.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\AsynchronousLibrary.AssemblyInfo.cs
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\AsynchronousLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\AsynchronousLibrary.sourcelink.json
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\TPD.AsynchronousProgramming.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\refint\TPD.AsynchronousProgramming.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\TPD.AsynchronousProgramming.pdb
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\DistributedProgramming\AsynchronousProgramming\AsynchronousLibrary\obj\Debug\net8.0\ref\TPD.AsynchronousProgramming.dll

@@ -1,0 +1,14 @@
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\bin\Debug\AppResources.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\bin\Debug\AppResources.pdb
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\bin\Debug\en-GB\AppResources.resources.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\bin\Debug\pl-PL\AppResources.resources.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\AppResources.csproj.AssemblyReference.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\AppResources.Resources.AppResources.resources
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\AppResources.Resources.AppResources.en-GB.resources
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\AppResources.Resources.AppResources.pl-PL.resources
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\AppResources.csproj.GenerateResource.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\AppResources.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\en-GB\AppResources.resources.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\pl-PL\AppResources.resources.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\AppResources.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\AppResources\obj\Debug\AppResources.pdb

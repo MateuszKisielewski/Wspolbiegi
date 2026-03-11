@@ -1,0 +1,12 @@
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\bin\Debug\net8.0\TP.CodingVType.deps.json
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\bin\Debug\net8.0\TP.CodingVType.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\bin\Debug\net8.0\TP.CodingVType.pdb
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\obj\Debug\net8.0\10-CodingVType.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\obj\Debug\net8.0\10-CodingVType.AssemblyInfoInputs.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\obj\Debug\net8.0\10-CodingVType.AssemblyInfo.cs
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\obj\Debug\net8.0\10-CodingVType.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\obj\Debug\net8.0\10-CodingVType.sourcelink.json
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\obj\Debug\net8.0\TP.CodingVType.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\obj\Debug\net8.0\refint\TP.CodingVType.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\obj\Debug\net8.0\TP.CodingVType.pdb
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\InformationComputation\CodingVType\obj\Debug\net8.0\ref\TP.CodingVType.dll

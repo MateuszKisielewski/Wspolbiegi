@@ -1,0 +1,6 @@
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\ApplicationArchitecture\bin\Release\TPA.ApplicationArchitecture.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\ApplicationArchitecture\bin\Release\TPA.ApplicationArchitecture.pdb
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\ApplicationArchitecture\obj\Release\ApplicationArchitecture.csproj.AssemblyReference.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\ApplicationArchitecture\obj\Release\ApplicationArchitecture.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\ApplicationArchitecture\obj\Release\TPA.ApplicationArchitecture.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\ApplicationArchitecture\obj\Release\TPA.ApplicationArchitecture.pdb

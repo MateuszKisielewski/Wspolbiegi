@@ -1,0 +1,11 @@
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\bin\Release\TPA.Reflection.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\bin\Release\TPA.Reflection.pdb
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\bin\Release\AppResources.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\bin\Release\AppResources.pdb
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\bin\Release\en-GB\AppResources.resources.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\bin\Release\pl-PL\AppResources.resources.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\obj\Release\Reflection.csproj.AssemblyReference.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\obj\Release\Reflection.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\obj\Release\Reflection.csproj.Up2Date
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\obj\Release\TPA.Reflection.dll
+C:\Users\Krzysztof Kata\Desktop\Wspolbiegi\Etap_0\AdaptiveProgramming\Reflection\obj\Release\TPA.Reflection.pdb
