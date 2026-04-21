@@ -49,3 +49,16 @@ C:\Users\Krzysztof Kata\Desktop\TPW\ConcurrentProgramming\ReactiveInteractiveUse
 C:\Users\Krzysztof Kata\Desktop\TPW\ConcurrentProgramming\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\refint\DataLayer.dll
 C:\Users\Krzysztof Kata\Desktop\TPW\ConcurrentProgramming\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\DataLayer.pdb
 C:\Users\Krzysztof Kata\Desktop\TPW\ConcurrentProgramming\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\ref\DataLayer.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\bin\Debug\net8.0\DataLayer.deps.json
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\bin\Debug\net8.0\DataLayer.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\bin\Debug\net8.0\DataLayer.pdb
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\Data.csproj.AssemblyReference.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\Data.AssemblyInfoInputs.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\Data.AssemblyInfo.cs
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\Data.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\Data.sourcelink.json
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\DataLayer.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\refint\DataLayer.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\DataLayer.pdb
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Data\obj\Debug\net8.0\ref\DataLayer.dll

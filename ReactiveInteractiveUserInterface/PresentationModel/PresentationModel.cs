@@ -65,7 +65,15 @@ namespace TP.ConcurrentProgramming.Presentation.Model
 
     private void StartHandler(BusinessLogic.IPosition position, BusinessLogic.IBall ball)
     {
-      ModelBall newBall = new ModelBall(position.x, position.y, ball) { Diameter = 20.0 };
+            // Zakładamy, że w warstwie Data stół ma wymiary 400x400
+            double scaleX = 1.0;
+            double scaleY = 1.0;
+
+            double scaledX = position.x * scaleX;
+            double scaledY = position.y * scaleY;
+
+            // Bierzemy przeskalowane wartości i tworzymy nową kulę modelową, którą przekażemy dalej
+            ModelBall newBall = new ModelBall(scaledX, scaledY, ball) { Diameter = 20.0 };
       BallChanged.Invoke(this, new BallChaneEventArgs() { Ball = newBall });
     }
 
