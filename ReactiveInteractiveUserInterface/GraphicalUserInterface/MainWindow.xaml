@@ -16,12 +16,12 @@
 
 		<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
 			<Label Content="Kulki:" VerticalAlignment="Center"/>
-			<TextBox Text="{Binding BallsCount}" Width="40" Margin="5" VerticalContentAlignment="Center" TextAlignment="Center"/>
+			<TextBox Text="{Binding BallsCount, UpdateSourceTrigger=PropertyChanged}" Width="40" Margin="5" VerticalContentAlignment="Center" TextAlignment="Center"/>
 			<Button Content="START" Command="{Binding StartCommand}" Width="80" Height="30" FontWeight="Bold"/>
 		</StackPanel>
 
-		<Border Grid.Row="1" BorderBrush="Green" BorderThickness="3" CornerRadius="5">
-			<ItemsControl ItemsSource="{Binding Balls}">
+		<Border Grid.Row="1" BorderBrush="Green" BorderThickness="3" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+			<ItemsControl ItemsSource="{Binding Balls}" Width="400" Height="400">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
 						<Canvas Background="Transparent" ClipToBounds="True"/>

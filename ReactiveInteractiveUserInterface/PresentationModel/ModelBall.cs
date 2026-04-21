@@ -9,6 +9,7 @@
 //  by introducing yourself and telling us what you do with this community.
 //_____________________________________________________________________________________________________________________________________
 
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -67,12 +68,15 @@ namespace TP.ConcurrentProgramming.Presentation.Model
     private double TopBackingField;
     private double LeftBackingField;
 
-    private void NewPositionNotification(object sender, IPosition e)
-    {
-      Top = e.y; Left = e.x;
-    }
+        private void NewPositionNotification(object sender, IPosition e)
+        {
+            double tableSize = 400;
 
-    private void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+            Left = Math.Clamp(e.x, 0, tableSize - Diameter);
+            Top = Math.Clamp(e.y, 0, tableSize - Diameter);
+        }
+
+        private void RaisePropertyChanged([CallerMemberName] string propertyName = "")
     {
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

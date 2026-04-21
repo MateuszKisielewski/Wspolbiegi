@@ -43,7 +43,6 @@ namespace TP.ConcurrentProgramming.BusinessLogic
         throw new ObjectDisposedException(nameof(BusinessLogicImplementation));
       if (upperLayerHandler == null)
         throw new ArgumentNullException(nameof(upperLayerHandler));
-      // Tutaj dodałem y w drugim argumencie bo było dwa razy x i x //JP 100%
       layerBellow.Start(numberOfBalls, (startingPosition, databall) => upperLayerHandler(new Position(startingPosition.x, startingPosition.y), new Ball(databall)));
     }
 

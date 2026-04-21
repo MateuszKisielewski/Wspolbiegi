@@ -8,11 +8,5 @@ namespace TP.ConcurrentProgramming.PresentationView
         {
             InitializeComponent();
         }
-        protected override void OnClosed(System.EventArgs e)
-        {
-            if (DataContext is TP.ConcurrentProgramming.Presentation.ViewModel.MainWindowViewModel viewModel)
-                viewModel.Dispose();
-            base.OnClosed(e);
-        }
     }
 }
