@@ -63,25 +63,24 @@ namespace TP.ConcurrentProgramming.Presentation.Model
     private readonly IObservable<EventPattern<BallChaneEventArgs>> eventObservable = null;
     private readonly UnderneathLayerAPI layerBellow = null;
 
-    private void StartHandler(BusinessLogic.IPosition position, BusinessLogic.IBall ball)
-    {
-            // Zakładamy, że w warstwie Data stół ma wymiary 400x400
+        private void StartHandler(BusinessLogic.IPosition position, BusinessLogic.IBall ball)
+        {
             double scaleX = 1.0;
             double scaleY = 1.0;
 
             double scaledX = position.x * scaleX;
             double scaledY = position.y * scaleY;
 
-            // Bierzemy przeskalowane wartości i tworzymy nową kulę modelową, którą przekażemy dalej
-            ModelBall newBall = new ModelBall(scaledX, scaledY, ball) { Diameter = 20.0 };
-      BallChanged.Invoke(this, new BallChaneEventArgs() { Ball = newBall });
-    }
+            ModelBall newBall = new ModelBall(scaledY, scaledX, ball) { Diameter = 20.0 };
 
-    #endregion private
+            BallChanged?.Invoke(this, new BallChaneEventArgs() { Ball = newBall });
+        }
 
-    #region TestingInfrastructure
+        #endregion private
 
-    [Conditional("DEBUG")]
+        #region TestingInfrastructure
+
+        [Conditional("DEBUG")]
     internal void CheckObjectDisposed(Action<bool> returnInstanceDisposed)
     {
       returnInstanceDisposed(Disposed);
