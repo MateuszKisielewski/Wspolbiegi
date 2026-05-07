@@ -8,16 +8,28 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
+using System;
+
 namespace TP.ConcurrentProgramming.Data
 {
   internal class Ball : IBall
   {
     #region ctor
 
-    internal Ball(Vector initialPosition, Vector initialVelocity)
+    internal Ball(IVector initialPosition, double mass, double radius)
     {
       Position = initialPosition;
-      Velocity = initialVelocity;
+      Mass = mass;
+      Radius = radius;
+
+      Random rand = new Random();
+      double vx = (rand.NextDouble() * 4.0) + 1.0;
+      if (rand.Next(2) == 0) vx = -vx;
+
+      double vy = (rand.NextDouble() * 4.0) + 1.0;
+      if (rand.Next(2) == 0) vy = -vy;
+
+      Velocity = new Vector(vx, vy);
     }
 
     #endregion ctor
@@ -27,22 +39,24 @@ namespace TP.ConcurrentProgramming.Data
     public event EventHandler<IVector>? NewPositionNotification;
 
     public IVector Velocity { get; set; }
+    public IVector Position { get; private set; }
+    public double Mass { get; }
+    public double Radius { get; }
+
+    public void Move()
+    {
+      Position.x += Velocity.x;
+      Position.y += Velocity.y;
+      RaiseNewPositionChangeNotification();
+    }
 
     #endregion IBall
 
     #region private
 
-    private Vector Position;
-
     private void RaiseNewPositionChangeNotification()
     {
       NewPositionNotification?.Invoke(this, Position);
-    }
-
-    internal void Move(Vector delta)
-    {
-      Position = new Vector(Position.x + delta.x, Position.y + delta.y);
-      RaiseNewPositionChangeNotification();
     }
 
     #endregion private

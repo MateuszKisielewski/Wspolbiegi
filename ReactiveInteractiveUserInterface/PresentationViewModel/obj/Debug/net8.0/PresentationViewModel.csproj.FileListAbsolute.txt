@@ -97,3 +97,23 @@ C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Presentatio
 C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\refint\TP.ConcurrentProgramming.PresentationViewModel.dll
 C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\TP.ConcurrentProgramming.PresentationViewModel.pdb
 C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\ref\TP.ConcurrentProgramming.PresentationViewModel.dll
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\bin\Debug\net8.0\TP.ConcurrentProgramming.PresentationViewModel.deps.json
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\bin\Debug\net8.0\TP.ConcurrentProgramming.PresentationViewModel.dll
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\bin\Debug\net8.0\TP.ConcurrentProgramming.PresentationViewModel.pdb
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\bin\Debug\net8.0\DataLayer.dll
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\bin\Debug\net8.0\TP.ConcurrentProgramming.BusinessLogic.dll
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\bin\Debug\net8.0\TP.ConcurrentProgramming.PresentationModel.dll
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\bin\Debug\net8.0\TP.ConcurrentProgramming.PresentationModel.pdb
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\bin\Debug\net8.0\DataLayer.pdb
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\bin\Debug\net8.0\TP.ConcurrentProgramming.BusinessLogic.pdb
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\PresentationViewModel.csproj.AssemblyReference.cache
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\PresentationViewModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\PresentationViewModel.AssemblyInfoInputs.cache
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\PresentationViewModel.AssemblyInfo.cs
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\PresentationViewModel.csproj.CoreCompileInputs.cache
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\PresentationViewModel.sourcelink.json
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\Presenta.E317AD4C.Up2Date
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\TP.ConcurrentProgramming.PresentationViewModel.dll
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\refint\TP.ConcurrentProgramming.PresentationViewModel.dll
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\TP.ConcurrentProgramming.PresentationViewModel.pdb
+C:\VisualStudio\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModel\obj\Debug\net8.0\ref\TP.ConcurrentProgramming.PresentationViewModel.dll

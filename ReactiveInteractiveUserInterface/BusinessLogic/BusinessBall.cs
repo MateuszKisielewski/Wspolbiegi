@@ -8,12 +8,17 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
+using System;
+
 namespace TP.ConcurrentProgramming.BusinessLogic
 {
   internal class Ball : IBall
   {
+    public double Diameter { get; }
+
     public Ball(Data.IBall ball)
     {
+      Diameter = ball.Radius * 2;
       ball.NewPositionNotification += RaisePositionChangeEvent;
     }
 

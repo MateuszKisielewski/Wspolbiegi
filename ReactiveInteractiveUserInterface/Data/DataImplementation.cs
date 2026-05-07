@@ -9,6 +9,7 @@
 //_____________________________________________________________________________________________________________________________________
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace TP.ConcurrentProgramming.Data
@@ -19,12 +20,14 @@ namespace TP.ConcurrentProgramming.Data
 
     public DataImplementation()
     {
-      MoveTimer = new Timer(Move, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(100));
     }
 
     #endregion ctor
 
     #region DataAbstractAPI
+
+    public override int BoardWidth => 400;
+    public override int BoardHeight => 400;
 
     public override void Start(int numberOfBalls, Action<IVector, IBall> upperLayerHandler)
     {
@@ -32,14 +35,22 @@ namespace TP.ConcurrentProgramming.Data
         throw new ObjectDisposedException(nameof(DataImplementation));
       if (upperLayerHandler == null)
         throw new ArgumentNullException(nameof(upperLayerHandler));
+      
       Random random = new Random();
       for (int i = 0; i < numberOfBalls; i++)
       {
-        Vector startingPosition = new(random.Next(100, 400 - 100), random.Next(100, 400 - 100));
-        Ball newBall = new(startingPosition, startingPosition);
-        upperLayerHandler(startingPosition, newBall);
+        double radius = random.Next(10, 20);
+        double mass = radius; 
+        Vector startingPosition = new Vector(random.Next((int)radius, BoardWidth - (int)radius), random.Next((int)radius, BoardHeight - (int)radius));
+        Ball newBall = new Ball(startingPosition, mass, radius);
         BallsList.Add(newBall);
+        upperLayerHandler(startingPosition, newBall);
       }
+    }
+
+    public override IEnumerable<IBall> GetBalls()
+    {
+        return BallsList;
     }
 
     #endregion DataAbstractAPI
@@ -52,7 +63,6 @@ namespace TP.ConcurrentProgramming.Data
       {
         if (disposing)
         {
-          MoveTimer.Dispose();
           BallsList.Clear();
         }
         Disposed = true;
@@ -72,18 +82,8 @@ namespace TP.ConcurrentProgramming.Data
 
     #region private
 
-    //private bool disposedValue;
     private bool Disposed = false;
-
-    private readonly Timer MoveTimer;
-    private Random RandomGenerator = new();
-    private List<Ball> BallsList = [];
-
-    private void Move(object? x)
-    {
-      foreach (Ball item in BallsList)
-        item.Move(new Vector((RandomGenerator.NextDouble() - 0.5) * 10, (RandomGenerator.NextDouble() - 0.5) * 10));
-    }
+    private List<IBall> BallsList = [];
 
     #endregion private
 

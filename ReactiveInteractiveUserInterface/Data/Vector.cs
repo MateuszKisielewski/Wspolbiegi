@@ -12,20 +12,20 @@
 namespace TP.ConcurrentProgramming.Data
 {
   /// <summary>
-  ///  Two dimensions immutable vector
+  ///  Two dimensions vector
   /// </summary>
-  internal record Vector : IVector
+  internal class Vector : IVector
   {
     #region IVector
 
     /// <summary>
     /// The X component of the vector.
     /// </summary>
-    public double x { get; init; }
+    public double x { get; set; }
     /// <summary>
     /// The Y component of the vector.
     /// </summary>
-    public double y { get; init; }
+    public double y { get; set; }
 
     #endregion IVector
 

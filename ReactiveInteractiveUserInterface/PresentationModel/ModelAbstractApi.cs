@@ -21,6 +21,9 @@ namespace TP.ConcurrentProgramming.Presentation.Model
 
   public abstract class ModelAbstractApi : IObservable<IBall>, IDisposable
   {
+    public static double CanvasWidth { get; set; } = 400;
+    public static double CanvasHeight { get; set; } = 400;
+
     public static ModelAbstractApi CreateModel()
     {
       return modelInstance.Value;

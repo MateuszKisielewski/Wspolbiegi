@@ -20,10 +20,11 @@ namespace TP.ConcurrentProgramming.Presentation.Model
 {
   internal class ModelBall : IBall
   {
-    public ModelBall(double top, double left, LogicIBall underneathBall)
+    public ModelBall(double top, double left, double diameter, LogicIBall underneathBall)
     {
       TopBackingField = top;
       LeftBackingField = left;
+      _baseDiameter = diameter;
       underneathBall.NewPositionNotification += NewPositionNotification;
     }
 
@@ -53,7 +54,13 @@ namespace TP.ConcurrentProgramming.Presentation.Model
       }
     }
 
-    public double Diameter { get; init; } = 0;
+    public double Diameter 
+    { 
+        get 
+        { 
+            return _baseDiameter * (ModelAbstractApi.CanvasWidth / 400.0); 
+        } 
+    }
 
     #region INotifyPropertyChanged
 
@@ -67,16 +74,21 @@ namespace TP.ConcurrentProgramming.Presentation.Model
 
     private double TopBackingField;
     private double LeftBackingField;
+    private readonly double _baseDiameter;
 
-        private void NewPositionNotification(object sender, IPosition e)
-        {
-            double tableSize = 400;
+    private void NewPositionNotification(object sender, IPosition e)
+    {
+        double logicalTableSize = 400;
+        double scaleX = ModelAbstractApi.CanvasWidth / logicalTableSize;
+        double scaleY = ModelAbstractApi.CanvasHeight / logicalTableSize;
 
-            Left = Math.Clamp(e.x, 0, tableSize - Diameter);
-            Top = Math.Clamp(e.y, 0, tableSize - Diameter);
-        }
+        Left = Math.Clamp(e.x * scaleX, 0, ModelAbstractApi.CanvasWidth - Diameter);
+        Top = Math.Clamp(e.y * scaleY, 0, ModelAbstractApi.CanvasHeight - Diameter);
 
-        private void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+        RaisePropertyChanged(nameof(Diameter));
+    }
+
+    private void RaisePropertyChanged([CallerMemberName] string propertyName = "")
     {
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

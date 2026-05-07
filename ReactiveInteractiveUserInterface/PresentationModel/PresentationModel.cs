@@ -63,24 +63,25 @@ namespace TP.ConcurrentProgramming.Presentation.Model
     private readonly IObservable<EventPattern<BallChaneEventArgs>> eventObservable = null;
     private readonly UnderneathLayerAPI layerBellow = null;
 
-        private void StartHandler(BusinessLogic.IPosition position, BusinessLogic.IBall ball)
-        {
-            double scaleX = 1.0;
-            double scaleY = 1.0;
+    private void StartHandler(BusinessLogic.IPosition position, BusinessLogic.IBall ball)
+    {
+        double logicalTableSize = 400;
+        double scaleX = ModelAbstractApi.CanvasWidth / logicalTableSize;
+        double scaleY = ModelAbstractApi.CanvasHeight / logicalTableSize;
 
-            double scaledX = position.x * scaleX;
-            double scaledY = position.y * scaleY;
+        double scaledX = position.x * scaleX;
+        double scaledY = position.y * scaleY;
 
-            ModelBall newBall = new ModelBall(scaledY, scaledX, ball) { Diameter = 20.0 };
+        ModelBall newBall = new ModelBall(scaledY, scaledX, ball.Diameter, ball);
 
-            BallChanged?.Invoke(this, new BallChaneEventArgs() { Ball = newBall });
-        }
+        BallChanged?.Invoke(this, new BallChaneEventArgs() { Ball = newBall });
+    }
 
-        #endregion private
+    #endregion private
 
-        #region TestingInfrastructure
+    #region TestingInfrastructure
 
-        [Conditional("DEBUG")]
+    [Conditional("DEBUG")]
     internal void CheckObjectDisposed(Action<bool> returnInstanceDisposed)
     {
       returnInstanceDisposed(Disposed);

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {}
+    "C:\\VisualStudio\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {
+    "C:\\VisualStudio\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\VisualStudio\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
         "projectName": "DataLayer",
-        "projectPath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\Krzysztof Kata\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\obj\\",
+        "projectPath": "C:\\VisualStudio\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\code\\.nuget\\packages\\",
+        "outputPath": "C:\\VisualStudio\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Krzysztof Kata\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\code\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -30,7 +30,6 @@
         },
         "frameworks": {
           "net8.0": {
-            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {}
           }
@@ -49,7 +48,6 @@
       },
       "frameworks": {
         "net8.0": {
-          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "Newtonsoft.Json": {
@@ -73,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -8,6 +8,9 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
+using System;
+using System.Collections.Generic;
+
 namespace TP.ConcurrentProgramming.Data
 {
   public abstract class DataAbstractAPI : IDisposable
@@ -23,7 +26,12 @@ namespace TP.ConcurrentProgramming.Data
 
     #region public API
 
+    public abstract int BoardWidth { get; }
+    public abstract int BoardHeight { get; }
+
     public abstract void Start(int numberOfBalls, Action<IVector, IBall> upperLayerHandler);
+    
+    public abstract IEnumerable<IBall> GetBalls();
 
     #endregion public API
 
@@ -45,12 +53,12 @@ namespace TP.ConcurrentProgramming.Data
     /// <summary>
     /// The X component of the vector.
     /// </summary>
-    double x { get; init; }
+    double x { get; set; }
 
     /// <summary>
     /// The y component of the vector.
     /// </summary>
-    double y { get; init; }
+    double y { get; set; }
   }
 
   public interface IBall
@@ -58,5 +66,10 @@ namespace TP.ConcurrentProgramming.Data
     event EventHandler<IVector> NewPositionNotification;
 
     IVector Velocity { get; set; }
+    IVector Position { get; }
+    double Mass { get; }
+    double Radius { get; }
+
+    void Move();
   }
 }
