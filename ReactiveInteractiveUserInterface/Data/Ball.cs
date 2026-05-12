@@ -34,9 +34,6 @@ namespace TP.ConcurrentProgramming.Data
             if (rand.Next(2) == 0) vy = -vy;
 
             Velocity = new Vector(vx, vy);
-
-            _isRunning = true;
-            _moveTask = Task.Run(MoveLoopAsync);
         }
 
         #endregion ctor
@@ -58,6 +55,16 @@ namespace TP.ConcurrentProgramming.Data
         }
 
         #endregion IBall
+
+        #region internal
+
+        internal void StartMoving()
+        {
+            _isRunning = true;
+            _moveTask = Task.Run(MoveLoopAsync);
+        }
+
+        #endregion internal
 
         #region private
 

@@ -35,7 +35,7 @@ namespace TP.ConcurrentProgramming.BusinessLogic
         public override void Dispose()
         {
             if (Disposed)
-                return;
+                throw new ObjectDisposedException(nameof(BusinessLogicImplementation));
 
             layerBellow.Dispose();
             Disposed = true;

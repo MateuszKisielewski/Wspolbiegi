@@ -10,6 +10,8 @@
 
 using System;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("TP.ConcurrentProgramming.BusinessLogicTest")]
+
 namespace TP.ConcurrentProgramming.BusinessLogic
 {
   public abstract class BusinessLogicAbstractAPI : IDisposable

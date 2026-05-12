@@ -35,6 +35,7 @@ namespace TP.ConcurrentProgramming.Data.Test
             using Ball newInstance = new(initialPosition, 1.0, 10.0);
             bool positionChanged = false;
             newInstance.NewPositionNotification += (sender, position) => { Assert.IsNotNull(sender); positionChanged = true; };
+            newInstance.StartMoving();
             await Task.Delay(100);
             Assert.IsTrue(positionChanged);
             Assert.AreNotEqual<double>(10.0, newInstance.Position.x);

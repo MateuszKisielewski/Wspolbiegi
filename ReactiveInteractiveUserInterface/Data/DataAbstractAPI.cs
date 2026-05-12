@@ -11,6 +11,8 @@
 using System;
 using System.Collections.Generic;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("TP.ConcurrentProgramming.Data.Test")]
+
 namespace TP.ConcurrentProgramming.Data
 {
   public abstract class DataAbstractAPI : IDisposable
