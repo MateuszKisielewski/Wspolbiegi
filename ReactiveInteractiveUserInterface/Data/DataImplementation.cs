@@ -43,6 +43,7 @@ namespace TP.ConcurrentProgramming.Data
         double mass = radius; 
         Vector startingPosition = new Vector(random.Next((int)radius, BoardWidth - (int)radius), random.Next((int)radius, BoardHeight - (int)radius));
         Ball newBall = new Ball(startingPosition, mass, radius);
+        newBall.StartMoving();
         BallsList.Add(newBall);
         upperLayerHandler(startingPosition, newBall);
       }
