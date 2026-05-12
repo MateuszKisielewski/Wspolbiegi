@@ -55,23 +55,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\code\\.nuget\\packages\\": {},
+    "C:\\Users\\Krzysztof Kata\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\VisualStudio\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
       "projectName": "DataLayer",
-      "projectPath": "C:\\VisualStudio\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
-      "packagesPath": "C:\\Users\\code\\.nuget\\packages\\",
-      "outputPath": "C:\\VisualStudio\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\obj\\",
+      "projectPath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
+      "packagesPath": "C:\\Users\\Krzysztof Kata\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\code\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Krzysztof Kata\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

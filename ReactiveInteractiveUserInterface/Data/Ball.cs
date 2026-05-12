@@ -9,56 +9,85 @@
 //_____________________________________________________________________________________________________________________________________
 
 using System;
+using System.Threading.Tasks;
 
 namespace TP.ConcurrentProgramming.Data
 {
-  internal class Ball : IBall
-  {
-    #region ctor
-
-    internal Ball(IVector initialPosition, double mass, double radius)
+    internal class Ball : IBall, IDisposable
     {
-      Position = initialPosition;
-      Mass = mass;
-      Radius = radius;
+        private bool _isRunning;
+        private Task? _moveTask;
 
-      Random rand = new Random();
-      double vx = (rand.NextDouble() * 4.0) + 1.0;
-      if (rand.Next(2) == 0) vx = -vx;
+        #region ctor
 
-      double vy = (rand.NextDouble() * 4.0) + 1.0;
-      if (rand.Next(2) == 0) vy = -vy;
+        internal Ball(IVector initialPosition, double mass, double radius)
+        {
+            Position = initialPosition;
+            Mass = mass;
+            Radius = radius;
 
-      Velocity = new Vector(vx, vy);
+            Random rand = new Random();
+            double vx = (rand.NextDouble() * 4.0) + 1.0;
+            if (rand.Next(2) == 0) vx = -vx;
+
+            double vy = (rand.NextDouble() * 4.0) + 1.0;
+            if (rand.Next(2) == 0) vy = -vy;
+
+            Velocity = new Vector(vx, vy);
+
+            _isRunning = true;
+            _moveTask = Task.Run(MoveLoopAsync);
+        }
+
+        #endregion ctor
+
+        #region IBall
+
+        public event EventHandler<IVector>? NewPositionNotification;
+
+        public IVector Velocity { get; set; }
+        public IVector Position { get; private set; }
+        public double Mass { get; }
+        public double Radius { get; }
+
+        public void Move()
+        {
+            Position.x += Velocity.x;
+            Position.y += Velocity.y;
+            RaiseNewPositionChangeNotification();
+        }
+
+        #endregion IBall
+
+        #region private
+
+        private async Task MoveLoopAsync()
+        {
+            while (_isRunning)
+            {
+                Move();
+                await Task.Delay(16);
+            }
+        }
+
+        private void RaiseNewPositionChangeNotification()
+        {
+            NewPositionNotification?.Invoke(this, Position);
+        }
+
+        #endregion private
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            _isRunning = false;
+            if (_moveTask != null)
+            {
+                _moveTask.Wait();
+            }
+        }
+
+        #endregion IDisposable
     }
-
-    #endregion ctor
-
-    #region IBall
-
-    public event EventHandler<IVector>? NewPositionNotification;
-
-    public IVector Velocity { get; set; }
-    public IVector Position { get; private set; }
-    public double Mass { get; }
-    public double Radius { get; }
-
-    public void Move()
-    {
-      Position.x += Velocity.x;
-      Position.y += Velocity.y;
-      RaiseNewPositionChangeNotification();
-    }
-
-    #endregion IBall
-
-    #region private
-
-    private void RaiseNewPositionChangeNotification()
-    {
-      NewPositionNotification?.Invoke(this, Position);
-    }
-
-    #endregion private
-  }
 }

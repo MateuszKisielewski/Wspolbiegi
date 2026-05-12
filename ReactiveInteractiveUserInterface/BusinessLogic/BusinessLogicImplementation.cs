@@ -37,10 +37,6 @@ namespace TP.ConcurrentProgramming.BusinessLogic
             if (Disposed)
                 return;
 
-            _isRunning = false;
-            Task.WaitAll(_tasks.ToArray());
-            _tasks.Clear();
-
             layerBellow.Dispose();
             Disposed = true;
         }
@@ -52,17 +48,20 @@ namespace TP.ConcurrentProgramming.BusinessLogic
             if (upperLayerHandler == null)
                 throw new ArgumentNullException(nameof(upperLayerHandler));
 
-            _isRunning = true;
             layerBellow.Start(numberOfBalls, (startingPosition, databall) =>
             {
                 var logicBall = new Ball(databall);
                 upperLayerHandler(new Position(startingPosition.x, startingPosition.y), logicBall);
-            });
 
-            foreach (var ball in layerBellow.GetBalls())
-            {
-                _tasks.Add(Task.Run(() => MoveBallAsync(ball)));
-            }
+                databall.NewPositionNotification += (sender, newPosition) =>
+                {
+                    lock (_collisionLock)
+                    {
+                        CheckWallCollisions(databall);
+                        CheckBallCollisions(databall);
+                    }
+                };
+            });
         }
 
         #endregion BusinessLogicAbstractAPI
@@ -71,24 +70,7 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
         private bool Disposed = false;
         private readonly UnderneathLayerAPI layerBellow;
-
         private readonly object _collisionLock = new object();
-        private bool _isRunning = false;
-        private List<Task> _tasks = new List<Task>();
-
-        private async Task MoveBallAsync(Data.IBall ball)
-        {
-            while (_isRunning)
-            {
-                lock (_collisionLock)
-                {
-                    CheckWallCollisions(ball);
-                    CheckBallCollisions(ball);
-                    ball.Move();
-                }
-                await Task.Delay(16);
-            }
-        }
 
         private void CheckWallCollisions(Data.IBall ball)
         {
@@ -127,14 +109,11 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
                 if (distance <= ball.Radius + otherBall.Radius)
                 {
-                    // ZABEZPIECZENIE PRZED "SKLEJANIEM" SIĘ KULEK
-                    // Jeśli kulki się przenikają, sprawdzamy ich wektory prędkości
                     double dvx = otherBall.Velocity.x - ball.Velocity.x;
                     double dvy = otherBall.Velocity.y - ball.Velocity.y;
 
-                    // Iloczyn skalarny: jeśli > 0, to kulki już się od siebie oddalają
                     if (dx * dvx + dy * dvy > 0)
-                        continue; // Ignorujemy ponowne przeliczanie kolizji!
+                        continue;
 
                     double nx = dx / distance;
                     double ny = dy / distance;
