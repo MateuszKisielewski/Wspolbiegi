@@ -8,62 +8,32 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TP.ConcurrentProgramming.Data;
+
 namespace TP.ConcurrentProgramming.Data.Test
 {
-  [TestClass]
-  public class DataImplementationUnitTest
-  {
-    [TestMethod]
-    public void ConstructorTestMethod()
+    [TestClass]
+    public class DataImplementationUnitTest
     {
-      using (DataImplementation newInstance = new DataImplementation())
-      {
-        IEnumerable<IBall>? ballsList = null;
-        newInstance.CheckBallsList(x => ballsList = x);
-        Assert.IsNotNull(ballsList);
-        int numberOfBalls = 0;
-        newInstance.CheckNumberOfBalls(x => numberOfBalls = x);
-        Assert.AreEqual<int>(0, numberOfBalls);
-      }
-    }
+        [TestMethod]
+        public void StartTestMethod()
+        {
+            using DataAbstractAPI dataAPI = DataAbstractAPI.GetDataLayer();
+            int ballCount = 0;
+            dataAPI.Start(5, (pos, ball) => { Assert.IsNotNull(ball); ballCount++; });
+            Assert.AreEqual<int>(5, ballCount);
+            Assert.AreEqual<int>(5, dataAPI.GetBalls().Count);
+        }
 
-    [TestMethod]
-    public void DisposeTestMethod()
-    {
-      DataImplementation newInstance = new DataImplementation();
-      bool newInstanceDisposed = false;
-      newInstance.CheckObjectDisposed(x => newInstanceDisposed = x);
-      Assert.IsFalse(newInstanceDisposed);
-      newInstance.Dispose();
-      newInstance.CheckObjectDisposed(x => newInstanceDisposed = x);
-      Assert.IsTrue(newInstanceDisposed);
-      IEnumerable<IBall>? ballsList = null;
-      newInstance.CheckBallsList(x => ballsList = x);
-      Assert.IsNotNull(ballsList);
-      newInstance.CheckNumberOfBalls(x => Assert.AreEqual<int>(0, x));
-      Assert.ThrowsException<ObjectDisposedException>(() => newInstance.Dispose());
-      Assert.ThrowsException<ObjectDisposedException>(() => newInstance.Start(0, (position, ball) => { }));
+        [TestMethod]
+        public void DisposeTestMethod()
+        {
+            DataAbstractAPI dataAPI = DataAbstractAPI.GetDataLayer();
+            dataAPI.Start(3, (pos, ball) => { Assert.IsNotNull(ball); });
+            Assert.AreEqual<int>(3, dataAPI.GetBalls().Count);
+            dataAPI.Dispose();
+            Assert.AreEqual<int>(0, dataAPI.GetBalls().Count);
+        }
     }
-
-    [TestMethod]
-    public void StartTestMethod()
-    {
-      using (DataImplementation newInstance = new DataImplementation())
-      {
-        int numberOfCallbackInvoked = 0;
-        int numberOfBalls2Create = 10;
-        newInstance.Start(
-          numberOfBalls2Create,
-          (startingPosition, ball) =>
-          {
-            numberOfCallbackInvoked++;
-            Assert.IsTrue(startingPosition.x >= 0);
-            Assert.IsTrue(startingPosition.y >= 0);
-            Assert.IsNotNull(ball);
-          });
-        Assert.AreEqual<int>(numberOfBalls2Create, numberOfCallbackInvoked);
-        newInstance.CheckNumberOfBalls(x => Assert.AreEqual<int>(10, x));
-      }
-    }
-  }
 }

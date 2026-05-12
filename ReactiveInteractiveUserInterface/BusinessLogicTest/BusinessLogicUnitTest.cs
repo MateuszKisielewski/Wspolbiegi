@@ -8,115 +8,74 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using TP.ConcurrentProgramming.BusinessLogic;
 using TP.ConcurrentProgramming.Data;
 
-namespace TP.ConcurrentProgramming.BusinessLogic.Test
+namespace TP.ConcurrentProgramming.BusinessLogicTest
 {
-  [TestClass]
-  public class BusinessLogicImplementationUnitTest
-  {
-    [TestMethod]
-    public void ConstructorTestMethod()
+    internal class DataLayerStub : DataAbstractAPI
     {
-      using (BusinessLogicImplementation newInstance = new(new DataLayerConstructorFixcure()))
-      {
-        bool newInstanceDisposed = true;
-        newInstance.CheckObjectDisposed(x => newInstanceDisposed = x);
-        Assert.IsFalse(newInstanceDisposed);
-      }
+        private List<TP.ConcurrentProgramming.Data.IBall> _listaKulek = new();
+
+        public override int BoardWidth => 100;
+        public override int BoardHeight => 100;
+
+        public override void Start(int numberOfBalls, Action<TP.ConcurrentProgramming.Data.IVector, TP.ConcurrentProgramming.Data.IBall> upperLayerHandler)
+        {
+            for (int i = 0; i < numberOfBalls; i++)
+            {
+                Ball nowaKulka = new(new Vector(50, 50), 10, 5);
+                _listaKulek.Add(nowaKulka);
+                upperLayerHandler(nowaKulka.Position, nowaKulka);
+            }
+        }
+
+        public override IEnumerable<TP.ConcurrentProgramming.Data.IBall> GetBalls() => _listaKulek;
+
+        public override void Dispose()
+        {
+            foreach (TP.ConcurrentProgramming.Data.IBall kulka in _listaKulek)
+            {
+                if (kulka is IDisposable disposableBall)
+                {
+                    disposableBall.Dispose();
+                }
+            }
+            _listaKulek.Clear();
+        }
     }
 
-    [TestMethod]
-    public void DisposeTestMethod()
+    [TestClass]
+    public class BusinessLogicUnitTest
     {
-      DataLayerDisposeFixcure dataLayerFixcure = new DataLayerDisposeFixcure();
-      BusinessLogicImplementation newInstance = new(dataLayerFixcure);
-      Assert.IsFalse(dataLayerFixcure.Disposed);
-      bool newInstanceDisposed = true;
-      newInstance.CheckObjectDisposed(x => newInstanceDisposed = x);
-      Assert.IsFalse(newInstanceDisposed);
-      newInstance.Dispose();
-      newInstance.CheckObjectDisposed(x => newInstanceDisposed = x);
-      Assert.IsTrue(newInstanceDisposed);
-      Assert.ThrowsException<ObjectDisposedException>(() => newInstance.Dispose());
-      Assert.ThrowsException<ObjectDisposedException>(() => newInstance.Start(0, (position, ball) => { }));
-      Assert.IsTrue(dataLayerFixcure.Disposed);
+        [TestMethod]
+        public void StartTestMethod()
+        {
+            DataLayerStub testowyStub = new();
+            int licznikWywolanHandlera = 0;
+            using BusinessLogicAbstractAPI logikaAPI = BusinessLogicAbstractAPI.GetBusinessLogicLayer(testowyStub);
+            logikaAPI.Start(3, (pozycja, kulkaLogiki) => { Assert.IsNotNull(kulkaLogiki); licznikWywolanHandlera++; });
+            Assert.AreEqual<int>(3, licznikWywolanHandlera);
+        }
+
+        [TestMethod]
+        public void DisposeTestMethod()
+        {
+            DataLayerStub testowyStub = new();
+            BusinessLogicAbstractAPI logikaAPI = BusinessLogicAbstractAPI.GetBusinessLogicLayer(testowyStub);
+            logikaAPI.Start(2, (pozycja, kulkaLogiki) => { Assert.IsNotNull(kulkaLogiki); });
+
+            List<TP.ConcurrentProgramming.Data.IBall> pobraneKulki = testowyStub.GetBalls().ToList();
+            Assert.AreEqual<int>(2, pobraneKulki.Count);
+
+            logikaAPI.Dispose();
+
+            pobraneKulki = testowyStub.GetBalls().ToList();
+            Assert.AreEqual<int>(0, pobraneKulki.Count);
+        }
     }
-
-    [TestMethod]
-    public void StartTestMethod()
-    {
-      DataLayerStartFixcure dataLayerFixcure = new();
-      using (BusinessLogicImplementation newInstance = new(dataLayerFixcure))
-      {
-        int called = 0;
-        int numberOfBalls2Create = 10;
-        newInstance.Start(
-          numberOfBalls2Create,
-          (startingPosition, ball) => { called++; Assert.IsNotNull(startingPosition); Assert.IsNotNull(ball); });
-        Assert.AreEqual<int>(1, called);
-        Assert.IsTrue(dataLayerFixcure.StartCalled);
-        Assert.AreEqual<int>(numberOfBalls2Create, dataLayerFixcure.NumberOfBallseCreated);
-      }
-    }
-
-    #region testing instrumentation
-
-    private class DataLayerConstructorFixcure : Data.DataAbstractAPI
-    {
-      public override void Dispose()
-      { }
-
-      public override void Start(int numberOfBalls, Action<IVector, Data.IBall> upperLayerHandler)
-      {
-        throw new NotImplementedException();
-      }
-    }
-
-    private class DataLayerDisposeFixcure : Data.DataAbstractAPI
-    {
-      internal bool Disposed = false;
-
-      public override void Dispose()
-      {
-        Disposed = true;
-      }
-
-      public override void Start(int numberOfBalls, Action<IVector, Data.IBall> upperLayerHandler)
-      {
-        throw new NotImplementedException();
-      }
-    }
-
-    private class DataLayerStartFixcure : Data.DataAbstractAPI
-    {
-      internal bool StartCalled = false;
-      internal int NumberOfBallseCreated = -1;
-
-      public override void Dispose()
-      { }
-
-      public override void Start(int numberOfBalls, Action<IVector, Data.IBall> upperLayerHandler)
-      {
-        StartCalled = true;
-        NumberOfBallseCreated = numberOfBalls;
-        upperLayerHandler(new DataVectorFixture(), new DataBallFixture());
-      }
-
-      private record DataVectorFixture : Data.IVector
-      {
-        public double x { get; init; }
-        public double y { get; init; }
-      }
-
-      private class DataBallFixture : Data.IBall
-      {
-        public IVector Velocity { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public event EventHandler<IVector>? NewPositionNotification = null;
-      }
-    }
-
-    #endregion testing instrumentation
-  }
 }

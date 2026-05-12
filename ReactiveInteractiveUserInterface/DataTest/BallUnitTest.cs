@@ -8,29 +8,37 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
+using TP.ConcurrentProgramming.Data;
+
 namespace TP.ConcurrentProgramming.Data.Test
 {
-  [TestClass]
-  public class BallUnitTest
-  {
-    [TestMethod]
-    public void ConstructorTestMethod()
+    [TestClass]
+    public class BallUnitTest
     {
-      Vector testinVector = new Vector(0.0, 0.0);
-      Ball newInstance = new(testinVector, testinVector);
-    }
+        [TestMethod]
+        public void ConstructorTestMethod()
+        {
+            Vector testingVector = new(10.0, 10.0);
+            Ball newInstance = new(testingVector, 5.0, 10.0);
+            Assert.AreEqual<double>(10.0, newInstance.Position.x);
+            Assert.AreEqual<double>(10.0, newInstance.Position.y);
+            Assert.AreEqual<double>(5.0, newInstance.Mass);
+            Assert.AreEqual<double>(10.0, newInstance.Radius);
+        }
 
-    [TestMethod]
-    public void MoveTestMethod()
-    {
-      Vector initialPosition = new(10.0, 10.0);
-      Ball newInstance = new(initialPosition, new Vector(0.0, 0.0));
-      IVector curentPosition = new Vector(0.0, 0.0);
-      int numberOfCallBackCalled = 0;
-      newInstance.NewPositionNotification += (sender, position) => { Assert.IsNotNull(sender); curentPosition = position; numberOfCallBackCalled++; };
-      newInstance.Move(new Vector(0.0, 0.0));
-      Assert.AreEqual<int>(1, numberOfCallBackCalled);
-      Assert.AreEqual<IVector>(initialPosition, curentPosition);
+        [TestMethod]
+        public async Task AsynchronousMovementTestMethod()
+        {
+            Vector initialPosition = new(10.0, 10.0);
+            using Ball newInstance = new(initialPosition, 1.0, 10.0);
+            bool positionChanged = false;
+            newInstance.NewPositionNotification += (sender, position) => { Assert.IsNotNull(sender); positionChanged = true; };
+            await Task.Delay(100);
+            Assert.IsTrue(positionChanged);
+            Assert.AreNotEqual<double>(10.0, newInstance.Position.x);
+            Assert.AreNotEqual<double>(10.0, newInstance.Position.y);
+        }
     }
-  }
 }

@@ -1,0 +1,8 @@
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\DataTest\bin\Debug\net8.0\.msCoverageSourceRootsMapping_DataTest
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\DataTest\bin\Debug\net8.0\CoverletSourceRootsMapping_DataTest
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\DataTest\obj\Debug\net8.0\DataTest.csproj.AssemblyReference.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\DataTest\obj\Debug\net8.0\DataTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\DataTest\obj\Debug\net8.0\DataTest.AssemblyInfoInputs.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\DataTest\obj\Debug\net8.0\DataTest.AssemblyInfo.cs
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\DataTest\obj\Debug\net8.0\DataTest.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\DataTest\obj\Debug\net8.0\DataTest.sourcelink.json

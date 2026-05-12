@@ -8,47 +8,42 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
-namespace TP.ConcurrentProgramming.BusinessLogic.Test
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using TP.ConcurrentProgramming.BusinessLogic;
+
+namespace TP.ConcurrentProgramming.BusinessLogicTest
 {
-  [TestClass]
-  public class BallUnitTest
-  {
-    [TestMethod]
-    public void MoveTestMethod()
+    internal class VectorFixture : TP.ConcurrentProgramming.Data.IVector
     {
-      DataBallFixture dataBallFixture = new DataBallFixture();
-      Ball newInstance = new(dataBallFixture);
-      int numberOfCallBackCalled = 0;
-      newInstance.NewPositionNotification += (sender, position) => { Assert.IsNotNull(sender); Assert.IsNotNull(position); numberOfCallBackCalled++; };
-      dataBallFixture.Move();
-      Assert.AreEqual<int>(1, numberOfCallBackCalled);
+        public double x { get; set; }
+        public double y { get; set; }
     }
 
-    #region testing instrumentation
-
-    private class DataBallFixture : Data.IBall
+    internal class DataBallFixture : TP.ConcurrentProgramming.Data.IBall
     {
-      public Data.IVector Velocity { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public TP.ConcurrentProgramming.Data.IVector Velocity { get; set; } = new VectorFixture();
+        public TP.ConcurrentProgramming.Data.IVector Position { get; } = new VectorFixture();
+        public double Mass { get; } = 1.0;
+        public double Radius { get; } = 1.0;
 
-      public event EventHandler<Data.IVector>? NewPositionNotification;
+        public event EventHandler<TP.ConcurrentProgramming.Data.IVector>? NewPositionNotification;
 
-      internal void Move()
-      {
-        NewPositionNotification?.Invoke(this, new VectorFixture(0.0, 0.0));
-      }
+        public void Move()
+        {
+            NewPositionNotification?.Invoke(this, Position);
+        }
     }
 
-    private class VectorFixture : Data.IVector
+    [TestClass]
+    public class BusinessBallUnitTest
     {
-      internal VectorFixture(double X, double Y)
-      {
-        x = X; y = Y;
-      }
-
-      public double x { get; init; }
-      public double y { get; init; }
+        [TestMethod]
+        public void ConstructorTestMethod()
+        {
+            DataBallFixture dataBall = new();
+            BusinessBall logicBall = new(dataBall);
+            Assert.IsNotNull(logicBall);
+        }
     }
-
-    #endregion testing instrumentation
-  }
 }
