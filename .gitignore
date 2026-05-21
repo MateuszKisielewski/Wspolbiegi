@@ -10,3 +10,4 @@ __pycache__
 *.pyo
 .vs
 /Etap_0/.vs
+*.bin
