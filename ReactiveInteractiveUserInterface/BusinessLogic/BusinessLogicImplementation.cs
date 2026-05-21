@@ -97,31 +97,33 @@ namespace TP.ConcurrentProgramming.BusinessLogic
         private void CheckWallCollisions(Data.IBall ball)
         {
             double diameter = ball.Radius * 2;
+            double px = ball.Position.x;
+            double py = ball.Position.y;
+            double vx = ball.Velocity.x;
+            double vy = ball.Velocity.y;
 
-            if (ball.Position.x < 0)
+            if (px < 0)
             {
-                ball.Position.x = 0;
-                if (ball.Velocity.x < 0)
-                    ball.Velocity.x = -ball.Velocity.x;
+                ball.AdjustPosition(-px, 0);
+                if (vx < 0) ball.SetVelocity(-vx, vy);
             }
-            else if (ball.Position.x + diameter > layerBellow.BoardWidth)
+            else if (px + diameter > layerBellow.BoardWidth)
             {
-                ball.Position.x = layerBellow.BoardWidth - diameter;
-                if (ball.Velocity.x > 0)
-                    ball.Velocity.x = -ball.Velocity.x;
+                ball.AdjustPosition((layerBellow.BoardWidth - diameter) - px, 0);
+                if (vx > 0) ball.SetVelocity(-vx, vy);
             }
 
-            if (ball.Position.y < 0)
+            vx = ball.Velocity.x;
+
+            if (py < 0)
             {
-                ball.Position.y = 0;
-                if (ball.Velocity.y < 0)
-                    ball.Velocity.y = -ball.Velocity.y;
+                ball.AdjustPosition(0, -py);
+                if (vy < 0) ball.SetVelocity(vx, -vy);
             }
-            else if (ball.Position.y + diameter > layerBellow.BoardHeight)
+            else if (py + diameter > layerBellow.BoardHeight)
             {
-                ball.Position.y = layerBellow.BoardHeight - diameter;
-                if (ball.Velocity.y > 0)
-                    ball.Velocity.y = -ball.Velocity.y;
+                ball.AdjustPosition(0, (layerBellow.BoardHeight - diameter) - py);
+                if (vy > 0) ball.SetVelocity(vx, -vy);
             }
         }
 
@@ -143,20 +145,17 @@ namespace TP.ConcurrentProgramming.BusinessLogic
                 if (distanceSq > minDist * minDist) continue;
 
                 double distance = Math.Sqrt(distanceSq);
-                if (distance < 1e-9) continue; // Unikamy dzielenia przez zero
+                if (distance < 1e-9) continue;
 
-                // Sprawdź czy kule się zbliżają (dot product prędkości względnej i wektora normalnego)
                 double dvx = other.Velocity.x - ball.Velocity.x;
                 double dvy = other.Velocity.y - ball.Velocity.y;
-                if (dx * dvx + dy * dvy >= 0) continue; // Kule się oddalają - nie kolizja
+                if (dx * dvx + dy * dvy >= 0) continue;
 
-                // Wektory: normalny (n) i styczny (t)
                 double nx = dx / distance;
                 double ny = dy / distance;
                 double tx = -ny;
                 double ty = nx;
 
-                // Rzuty prędkości na oś normalną i styczną
                 double v1n = ball.Velocity.x * nx + ball.Velocity.y * ny;
                 double v2n = other.Velocity.x * nx + other.Velocity.y * ny;
                 double v1t = ball.Velocity.x * tx + ball.Velocity.y * ty;
@@ -166,23 +165,20 @@ namespace TP.ConcurrentProgramming.BusinessLogic
                 double m2 = other.Mass;
                 double totalMass = m1 + m2;
 
-                // Zderzenie elastyczne - zachowanie pędu na osi normalnej
                 double v1nAfter = (v1n * (m1 - m2) + 2 * m2 * v2n) / totalMass;
                 double v2nAfter = (v2n * (m2 - m1) + 2 * m1 * v1n) / totalMass;
 
-                // Składanie prędkości ze składowej normalnej i stycznej
-                ball.Velocity.x = tx * v1t + nx * v1nAfter;
-                ball.Velocity.y = ty * v1t + ny * v1nAfter;
-                other.Velocity.x = tx * v2t + nx * v2nAfter;
-                other.Velocity.y = ty * v2t + ny * v2nAfter;
+                ball.SetVelocity(tx * v1t + nx * v1nAfter, ty * v1t + ny * v1nAfter);
+                other.SetVelocity(tx * v2t + nx * v2nAfter, ty * v2t + ny * v2nAfter);
 
-                // Separacja kul (zapobieganie nakładaniu)
                 double overlap = minDist - distance;
                 double correctionRatio = overlap / 2.0 / distance;
-                ball.Position.x -= dx * correctionRatio;
-                ball.Position.y -= dy * correctionRatio;
-                other.Position.x += dx * correctionRatio;
-                other.Position.y += dy * correctionRatio;
+                
+                double adjustX = dx * correctionRatio;
+                double adjustY = dy * correctionRatio;
+                
+                ball.AdjustPosition(-adjustX, -adjustY);
+                other.AdjustPosition(adjustX, adjustY);
             }
         }
 

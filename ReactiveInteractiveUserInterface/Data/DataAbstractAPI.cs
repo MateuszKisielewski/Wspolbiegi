@@ -86,5 +86,8 @@ namespace TP.ConcurrentProgramming.Data
         double Radius { get; }
 
         void Move();
+
+        void SetVelocity(double vx, double vy);
+        void AdjustPosition(double dX, double dY);
     }
 }

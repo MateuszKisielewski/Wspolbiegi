@@ -48,7 +48,6 @@ namespace TP.ConcurrentProgramming.Data
 
                 Vector startingPosition = new Vector(startX, startY);
                 Ball newBall = new Ball(startingPosition, mass, radius);
-                newBall.StartMoving();
 
                 lock (_ballsLock)
                 {
@@ -56,6 +55,8 @@ namespace TP.ConcurrentProgramming.Data
                 }
 
                 upperLayerHandler(startingPosition, newBall);
+                
+                newBall.StartMoving();
             }
         }
 

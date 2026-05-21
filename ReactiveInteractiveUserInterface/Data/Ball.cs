@@ -89,6 +89,24 @@ namespace TP.ConcurrentProgramming.Data
             MoveByDelta(TargetStepMs / 1000.0);
         }
 
+        public void SetVelocity(double vx, double vy)
+        {
+            lock (_stateLock)
+            {
+                Velocity.x = vx;
+                Velocity.y = vy;
+            }
+        }
+
+        public void AdjustPosition(double dx, double dy)
+        {
+            lock (_stateLock)
+            {
+                Position.x += dx;
+                Position.y += dy;
+            }
+        }
+
         #endregion IBall
 
         #region internal
