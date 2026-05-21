@@ -12,41 +12,58 @@ using System.ComponentModel;
 
 namespace TP.ConcurrentProgramming.Presentation.Model
 {
-  public interface IBall : INotifyPropertyChanged
-  {
-    double Top { get; }
-    double Left { get; }
-    double Diameter { get; }
-  }
-
-  public abstract class ModelAbstractApi : IObservable<IBall>, IDisposable
-  {
-    public static double CanvasWidth { get; set; } = 400;
-    public static double CanvasHeight { get; set; } = 400;
-
-    public static ModelAbstractApi CreateModel()
+    /// <summary>
+    /// Interfejs kuli widoczny dla ViewModelu - wspiera INotifyPropertyChanged
+    /// co umożliwia reaktywne wiązanie danych w WPF (data binding).
+    /// </summary>
+    public interface IBall : INotifyPropertyChanged
     {
-      return modelInstance.Value;
+        double Top { get; }
+        double Left { get; }
+        double Diameter { get; }
     }
 
-    public abstract void Start(int numberOfBalls);
+    /// <summary>
+    /// Abstrakcyjne API warstwy modelu prezentacji.
+    /// Implementuje IObservable&lt;IBall&gt; - programowanie reaktywne (Rx).
+    /// Wstrzykiwanie zależności (DI) przez konstruktor w ModelImplementation.
+    /// </summary>
+    public abstract class ModelAbstractApi : IObservable<IBall>, IDisposable
+    {
+        /// <summary>
+        /// Szerokość obszaru rysowania - ustawiana przez widok przed startem symulacji.
+        /// </summary>
+        public static double CanvasWidth { get; set; } = 400;
 
-    #region IObservable
+        /// <summary>
+        /// Wysokość obszaru rysowania - ustawiana przez widok przed startem symulacji.
+        /// </summary>
+        public static double CanvasHeight { get; set; } = 400;
 
-    public abstract IDisposable Subscribe(IObserver<IBall> observer);
+        public static ModelAbstractApi CreateModel()
+        {
+            return modelInstance.Value;
+        }
 
-    #endregion IObservable
+        public abstract void Start(int numberOfBalls);
 
-    #region IDisposable
+        #region IObservable
 
-    public abstract void Dispose();
+        public abstract IDisposable Subscribe(IObserver<IBall> observer);
 
-    #endregion IDisposable
+        #endregion IObservable
 
-    #region private
+        #region IDisposable
 
-    private static Lazy<ModelAbstractApi> modelInstance = new Lazy<ModelAbstractApi>(() => new ModelImplementation());
+        public abstract void Dispose();
 
-    #endregion private
-  }
+        #endregion IDisposable
+
+        #region private
+
+        private static Lazy<ModelAbstractApi> modelInstance =
+            new Lazy<ModelAbstractApi>(() => new ModelImplementation());
+
+        #endregion private
+    }
 }

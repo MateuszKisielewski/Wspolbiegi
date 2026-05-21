@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net8.0": {
       "Newtonsoft.Json/13.0.3": {
@@ -61,11 +61,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
       "projectName": "DataLayer",
-      "projectPath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
+      "projectPath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\Krzysztof Kata\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\Data\\obj\\",
+      "outputPath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\Wspolbiegi\\ReactiveInteractiveUserInterface\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -99,7 +99,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -127,7 +127,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

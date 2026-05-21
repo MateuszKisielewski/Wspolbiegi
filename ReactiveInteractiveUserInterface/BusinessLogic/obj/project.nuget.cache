@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Qa+nnAxDmN8=",
+  "dgSpecHash": "c1LV9/GdYGY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj",
+  "projectFilePath": "C:\\Users\\Krzysztof Kata\\Desktop\\TPW\\Wspolbiegi\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Krzysztof Kata\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],

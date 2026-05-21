@@ -13,63 +13,78 @@ using System.Collections.Generic;
 
 namespace TP.ConcurrentProgramming.Data
 {
-  public abstract class DataAbstractAPI : IDisposable
-  {
-    #region Layer Factory
-
-    public static DataAbstractAPI GetDataLayer()
+    /// <summary>
+    /// Abstrakcyjne API warstwy danych. 
+    /// Wyraźnie wydzielona abstrakcja umożliwia niezależne testowanie jednostkowe warstwy logiki.
+    /// </summary>
+    public abstract class DataAbstractAPI : IDisposable
     {
-      return modelInstance.Value;
+        #region Layer Factory
+
+        public static DataAbstractAPI GetDataLayer()
+        {
+            return modelInstance.Value;
+        }
+
+        #endregion Layer Factory
+
+        #region public API
+
+        public abstract int BoardWidth { get; }
+        public abstract int BoardHeight { get; }
+
+        /// <summary>
+        /// Uruchamia symulację numberOfBalls kul.
+        /// upperLayerHandler wywoływany dla każdej nowo utworzonej kuli.
+        /// </summary>
+        public abstract void Start(int numberOfBalls, Action<IVector, IBall> upperLayerHandler);
+
+        /// <summary>
+        /// Zwraca kolekcję wszystkich aktywnych kul.
+        /// Używane przez warstwę logiki do detekcji kolizji.
+        /// </summary>
+        public abstract IEnumerable<IBall> GetBalls();
+
+        #endregion public API
+
+        #region IDisposable
+
+        public abstract void Dispose();
+
+        #endregion IDisposable
+
+        #region private
+
+        private static Lazy<DataAbstractAPI> modelInstance =
+            new Lazy<DataAbstractAPI>(() => new DataImplementation());
+
+        #endregion private
     }
 
-    #endregion Layer Factory
-
-    #region public API
-
-    public abstract int BoardWidth { get; }
-    public abstract int BoardHeight { get; }
-
-    public abstract void Start(int numberOfBalls, Action<IVector, IBall> upperLayerHandler);
-    
-    public abstract IEnumerable<IBall> GetBalls();
-
-    #endregion public API
-
-    #region IDisposable
-
-    public abstract void Dispose();
-
-    #endregion IDisposable
-
-    #region private
-
-    private static Lazy<DataAbstractAPI> modelInstance = new Lazy<DataAbstractAPI>(() => new DataImplementation());
-
-    #endregion private
-  }
-
-  public interface IVector
-  {
     /// <summary>
-    /// The X component of the vector.
+    /// Wektor 2D z możliwością modyfikacji współrzędnych.
     /// </summary>
-    double x { get; set; }
+    public interface IVector
+    {
+        /// <summary>Składowa X wektora.</summary>
+        double x { get; set; }
+
+        /// <summary>Składowa Y wektora.</summary>
+        double y { get; set; }
+    }
 
     /// <summary>
-    /// The y component of the vector.
+    /// Interfejs kuli w warstwie danych.
     /// </summary>
-    double y { get; set; }
-  }
+    public interface IBall
+    {
+        event EventHandler<IVector> NewPositionNotification;
 
-  public interface IBall
-  {
-    event EventHandler<IVector> NewPositionNotification;
+        IVector Velocity { get; set; }
+        IVector Position { get; }
+        double Mass { get; }
+        double Radius { get; }
 
-    IVector Velocity { get; set; }
-    IVector Position { get; }
-    double Mass { get; }
-    double Radius { get; }
-
-    void Move();
-  }
+        void Move();
+    }
 }

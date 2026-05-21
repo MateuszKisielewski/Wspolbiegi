@@ -6,36 +6,22 @@
 //
 //  https://github.com/mpostol/TP/discussions/182
 //
-//  by introducing yourself and telling us what you do with this community.
 //_____________________________________________________________________________________________________________________________________
 
 namespace TP.ConcurrentProgramming.Data
 {
-  /// <summary>
-  ///  Two dimensions vector
-  /// </summary>
-  internal class Vector : IVector
-  {
-    #region IVector
-
     /// <summary>
-    /// The X component of the vector.
+    /// Konkretna implementacja IVector - mutowalny wektor 2D.
     /// </summary>
-    public double x { get; set; }
-    /// <summary>
-    /// The Y component of the vector.
-    /// </summary>
-    public double y { get; set; }
-
-    #endregion IVector
-
-    /// <summary>
-    /// Creates new instance of <seealso cref="Vector"/> and initialize all properties
-    /// </summary>
-    public Vector(double XComponent, double YComponent)
+    internal class Vector : IVector
     {
-      x = XComponent;
-      y = YComponent;
+        public Vector(double x, double y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public double x { get; set; }
+        public double y { get; set; }
     }
-  }
 }

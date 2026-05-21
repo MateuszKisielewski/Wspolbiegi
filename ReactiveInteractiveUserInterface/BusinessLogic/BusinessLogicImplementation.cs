@@ -11,11 +11,15 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using UnderneathLayerAPI = TP.ConcurrentProgramming.Data.DataAbstractAPI;
 
 namespace TP.ConcurrentProgramming.BusinessLogic
 {
+    /// <summary>
+    /// Implementacja warstwy logiki.
+    /// Odpowiada za detekcję i obsługę kolizji kul ze ścianami i innymi kulami.
+    /// Sekcje krytyczne chronią współdzielone dane przed wyścigiem wątków.
+    /// </summary>
     internal class BusinessLogicImplementation : BusinessLogicAbstractAPI
     {
         #region ctor
@@ -23,9 +27,13 @@ namespace TP.ConcurrentProgramming.BusinessLogic
         public BusinessLogicImplementation() : this(null)
         { }
 
+        /// <summary>
+        /// Konstruktor z wstrzykiwaniem zależności (Dependency Injection).
+        /// Umożliwia przekazanie mocka warstwy danych w testach jednostkowych.
+        /// </summary>
         internal BusinessLogicImplementation(UnderneathLayerAPI? underneathLayer)
         {
-            layerBellow = underneathLayer == null ? UnderneathLayerAPI.GetDataLayer() : underneathLayer;
+            layerBellow = underneathLayer ?? UnderneathLayerAPI.GetDataLayer();
         }
 
         #endregion ctor
@@ -36,7 +44,6 @@ namespace TP.ConcurrentProgramming.BusinessLogic
         {
             if (Disposed)
                 throw new ObjectDisposedException(nameof(BusinessLogicImplementation));
-
             layerBellow.Dispose();
             Disposed = true;
         }
@@ -50,11 +57,17 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
             layerBellow.Start(numberOfBalls, (startingPosition, databall) =>
             {
-                var logicBall = new Ball(databall);
-                upperLayerHandler(new Position(startingPosition.x, startingPosition.y), logicBall);
+                Ball logicBall = new Ball(databall);
 
+                upperLayerHandler(
+                    new Position(startingPosition.x, startingPosition.y),
+                    logicBall);
+
+                // Rejestracja obsługi zdarzenia - programowanie reaktywne.
+                // Każde nowe położenie kuli wyzwala detekcję kolizji (asynchronicznie).
                 databall.NewPositionNotification += (sender, newPosition) =>
                 {
+                    // Globalny lock zapobiega wyścigowi wątków przy równoczesnej detekcji kolizji
                     lock (_collisionLock)
                     {
                         CheckWallCollisions(databall);
@@ -70,71 +83,106 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
         private bool Disposed = false;
         private readonly UnderneathLayerAPI layerBellow;
+
+        /// <summary>
+        /// Globalny lock sekcji krytycznej detekcji kolizji.
+        /// Zapobiega równoczesnemu modyfikowaniu prędkości kul przez wiele wątków.
+        /// </summary>
         private readonly object _collisionLock = new object();
 
+        /// <summary>
+        /// Sprawdza i obsługuje odbicia od ścian planszy.
+        /// Odwraca składową prędkości przy kontakcie ze ścianą.
+        /// </summary>
         private void CheckWallCollisions(Data.IBall ball)
         {
-            if (ball.Position.x <= 0)
+            double diameter = ball.Radius * 2;
+
+            if (ball.Position.x < 0)
             {
                 ball.Position.x = 0;
-                if (ball.Velocity.x < 0) ball.Velocity.x = -ball.Velocity.x;
+                if (ball.Velocity.x < 0)
+                    ball.Velocity.x = -ball.Velocity.x;
             }
-            else if (ball.Position.x + ball.Radius * 2 >= layerBellow.BoardWidth)
+            else if (ball.Position.x + diameter > layerBellow.BoardWidth)
             {
-                ball.Position.x = layerBellow.BoardWidth - ball.Radius * 2;
-                if (ball.Velocity.x > 0) ball.Velocity.x = -ball.Velocity.x;
+                ball.Position.x = layerBellow.BoardWidth - diameter;
+                if (ball.Velocity.x > 0)
+                    ball.Velocity.x = -ball.Velocity.x;
             }
 
-            if (ball.Position.y <= 0)
+            if (ball.Position.y < 0)
             {
                 ball.Position.y = 0;
-                if (ball.Velocity.y < 0) ball.Velocity.y = -ball.Velocity.y;
+                if (ball.Velocity.y < 0)
+                    ball.Velocity.y = -ball.Velocity.y;
             }
-            else if (ball.Position.y + ball.Radius * 2 >= layerBellow.BoardHeight)
+            else if (ball.Position.y + diameter > layerBellow.BoardHeight)
             {
-                ball.Position.y = layerBellow.BoardHeight - ball.Radius * 2;
-                if (ball.Velocity.y > 0) ball.Velocity.y = -ball.Velocity.y;
+                ball.Position.y = layerBellow.BoardHeight - diameter;
+                if (ball.Velocity.y > 0)
+                    ball.Velocity.y = -ball.Velocity.y;
             }
         }
 
+        /// <summary>
+        /// Sprawdza kolizje między kulami i aktualizuje ich prędkości
+        /// zgodnie z zasadami zachowania pędu i energii kinetycznej (zderzenie elastyczne).
+        /// </summary>
         private void CheckBallCollisions(Data.IBall ball)
         {
-            foreach (var otherBall in layerBellow.GetBalls())
+            foreach (Data.IBall other in layerBellow.GetBalls())
             {
-                if (ball == otherBall) continue;
+                if (ReferenceEquals(ball, other)) continue;
 
-                double dx = otherBall.Position.x - ball.Position.x;
-                double dy = otherBall.Position.y - ball.Position.y;
-                double distance = Math.Sqrt(dx * dx + dy * dy);
+                double dx = other.Position.x - ball.Position.x;
+                double dy = other.Position.y - ball.Position.y;
+                double distanceSq = dx * dx + dy * dy;
+                double minDist = ball.Radius + other.Radius;
 
-                if (distance <= ball.Radius + otherBall.Radius)
-                {
-                    double dvx = otherBall.Velocity.x - ball.Velocity.x;
-                    double dvy = otherBall.Velocity.y - ball.Velocity.y;
+                if (distanceSq > minDist * minDist) continue;
 
-                    if (dx * dvx + dy * dvy > 0)
-                        continue;
+                double distance = Math.Sqrt(distanceSq);
+                if (distance < 1e-9) continue; // Unikamy dzielenia przez zero
 
-                    double nx = dx / distance;
-                    double ny = dy / distance;
+                // Sprawdź czy kule się zbliżają (dot product prędkości względnej i wektora normalnego)
+                double dvx = other.Velocity.x - ball.Velocity.x;
+                double dvy = other.Velocity.y - ball.Velocity.y;
+                if (dx * dvx + dy * dvy >= 0) continue; // Kule się oddalają - nie kolizja
 
-                    double tx = -ny;
-                    double ty = nx;
+                // Wektory: normalny (n) i styczny (t)
+                double nx = dx / distance;
+                double ny = dy / distance;
+                double tx = -ny;
+                double ty = nx;
 
-                    double dpTan1 = ball.Velocity.x * tx + ball.Velocity.y * ty;
-                    double dpTan2 = otherBall.Velocity.x * tx + otherBall.Velocity.y * ty;
+                // Rzuty prędkości na oś normalną i styczną
+                double v1n = ball.Velocity.x * nx + ball.Velocity.y * ny;
+                double v2n = other.Velocity.x * nx + other.Velocity.y * ny;
+                double v1t = ball.Velocity.x * tx + ball.Velocity.y * ty;
+                double v2t = other.Velocity.x * tx + other.Velocity.y * ty;
 
-                    double dpNorm1 = ball.Velocity.x * nx + ball.Velocity.y * ny;
-                    double dpNorm2 = otherBall.Velocity.x * nx + otherBall.Velocity.y * ny;
+                double m1 = ball.Mass;
+                double m2 = other.Mass;
+                double totalMass = m1 + m2;
 
-                    double m1 = (dpNorm1 * (ball.Mass - otherBall.Mass) + 2.0 * otherBall.Mass * dpNorm2) / (ball.Mass + otherBall.Mass);
-                    double m2 = (dpNorm2 * (otherBall.Mass - ball.Mass) + 2.0 * ball.Mass * dpNorm1) / (ball.Mass + otherBall.Mass);
+                // Zderzenie elastyczne - zachowanie pędu na osi normalnej
+                double v1nAfter = (v1n * (m1 - m2) + 2 * m2 * v2n) / totalMass;
+                double v2nAfter = (v2n * (m2 - m1) + 2 * m1 * v1n) / totalMass;
 
-                    ball.Velocity.x = tx * dpTan1 + nx * m1;
-                    ball.Velocity.y = ty * dpTan1 + ny * m1;
-                    otherBall.Velocity.x = tx * dpTan2 + nx * m2;
-                    otherBall.Velocity.y = ty * dpTan2 + ny * m2;
-                }
+                // Składanie prędkości ze składowej normalnej i stycznej
+                ball.Velocity.x = tx * v1t + nx * v1nAfter;
+                ball.Velocity.y = ty * v1t + ny * v1nAfter;
+                other.Velocity.x = tx * v2t + nx * v2nAfter;
+                other.Velocity.y = ty * v2t + ny * v2nAfter;
+
+                // Separacja kul (zapobieganie nakładaniu)
+                double overlap = minDist - distance;
+                double correctionRatio = overlap / 2.0 / distance;
+                ball.Position.x -= dx * correctionRatio;
+                ball.Position.y -= dy * correctionRatio;
+                other.Position.x += dx * correctionRatio;
+                other.Position.y += dy * correctionRatio;
             }
         }
 
