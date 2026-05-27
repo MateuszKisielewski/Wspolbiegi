@@ -15,12 +15,6 @@ using UnderneathLayerAPI = TP.ConcurrentProgramming.BusinessLogic.BusinessLogicA
 
 namespace TP.ConcurrentProgramming.Presentation.Model
 {
-    /// <summary>
-    /// Implementacja modelu prezentacji.
-    /// Używa Reactive Extensions (Rx) - programowanie reaktywne - do powiadamiania ViewModelu
-    /// o nowych kulach przez IObservable&lt;IBall&gt;.
-    /// Wstrzykiwanie zależności (DI) w konstruktorze umożliwia podmianę warstwy logiki w testach.
-    /// </summary>
     internal class ModelImplementation : ModelAbstractApi
     {
         #region ctor
@@ -28,14 +22,10 @@ namespace TP.ConcurrentProgramming.Presentation.Model
         internal ModelImplementation() : this(null)
         { }
 
-        /// <summary>
-        /// Konstruktor z Dependency Injection - przyjmuje warstwę logiki lub tworzy domyślną.
-        /// </summary>
         internal ModelImplementation(UnderneathLayerAPI? underneathLayer)
         {
             layerBellow = underneathLayer ?? UnderneathLayerAPI.GetBusinessLogicLayer();
 
-            // Observable.FromEventPattern konwertuje zdarzenie BallChanged na strumień Rx
             eventObservable = Observable.FromEventPattern<BallChangedEventArgs>(
                 this, nameof(BallChanged));
         }
@@ -52,10 +42,6 @@ namespace TP.ConcurrentProgramming.Presentation.Model
             Disposed = true;
         }
 
-        /// <summary>
-        /// Subskrybuje obserwatora na strumień nowych kul.
-        /// Reaktywne: obserwator reaguje na każdą nową kulę bez aktywnego odpytywania (polling).
-        /// </summary>
         public override IDisposable Subscribe(IObserver<IBall> observer)
         {
             return eventObservable.Subscribe(
@@ -87,10 +73,6 @@ namespace TP.ConcurrentProgramming.Presentation.Model
 
         private const double LogicalBoardSize = 400.0;
 
-        /// <summary>
-        /// Handler wywoływany przez warstwę logiki dla każdej nowej kuli.
-        /// Tworzy ModelBall ze skalowanymi współrzędnymi i emituje zdarzenie BallChanged.
-        /// </summary>
         private void StartHandler(BusinessLogic.IPosition position, BusinessLogic.IBall ball)
         {
             double scaleX = ModelAbstractApi.CanvasWidth / LogicalBoardSize;
@@ -129,9 +111,6 @@ namespace TP.ConcurrentProgramming.Presentation.Model
         #endregion TestingInfrastructure
     }
 
-    /// <summary>
-    /// Argumenty zdarzenia zmiany kuli.
-    /// </summary>
     public class BallChangedEventArgs : EventArgs
     {
         public IBall Ball { get; init; } = null!;

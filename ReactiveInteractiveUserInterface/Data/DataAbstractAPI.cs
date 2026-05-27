@@ -13,10 +13,6 @@ using System.Collections.Generic;
 
 namespace TP.ConcurrentProgramming.Data
 {
-    /// <summary>
-    /// Abstrakcyjne API warstwy danych. 
-    /// Wyraźnie wydzielona abstrakcja umożliwia niezależne testowanie jednostkowe warstwy logiki.
-    /// </summary>
     public abstract class DataAbstractAPI : IDisposable
     {
         #region Layer Factory
@@ -61,21 +57,13 @@ namespace TP.ConcurrentProgramming.Data
         #endregion private
     }
 
-    /// <summary>
-    /// Wektor 2D z możliwością modyfikacji współrzędnych.
-    /// </summary>
     public interface IVector
     {
-        /// <summary>Składowa X wektora.</summary>
         double x { get; set; }
 
-        /// <summary>Składowa Y wektora.</summary>
         double y { get; set; }
     }
 
-    /// <summary>
-    /// Interfejs kuli w warstwie danych.
-    /// </summary>
     public interface IBall
     {
         event EventHandler<IVector> NewPositionNotification;

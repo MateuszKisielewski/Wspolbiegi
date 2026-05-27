@@ -10,9 +10,6 @@
 
 namespace TP.ConcurrentProgramming.Data
 {
-    /// <summary>
-    /// Konkretna implementacja IVector - mutowalny wektor 2D.
-    /// </summary>
     internal class Vector : IVector
     {
         public Vector(double x, double y)

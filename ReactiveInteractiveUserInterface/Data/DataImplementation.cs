@@ -42,7 +42,6 @@ namespace TP.ConcurrentProgramming.Data
                 double radius = random.Next(10, 20);
                 double mass = radius;
 
-                // Pozycja startowa z marginesem równym promieniowi kuli
                 double startX = random.NextDouble() * (BoardWidth - 2 * radius) + radius;
                 double startY = random.NextDouble() * (BoardHeight - 2 * radius) + radius;
 
@@ -64,7 +63,6 @@ namespace TP.ConcurrentProgramming.Data
         {
             lock (_ballsLock)
             {
-                // Zwracamy kopię listy, żeby uniknąć blokowania podczas iteracji
                 return new List<IBall>(BallsList);
             }
         }
@@ -86,7 +84,6 @@ namespace TP.ConcurrentProgramming.Data
                         BallsList.Clear();
                     }
 
-                    // Zamknij logger diagnostyczny
                     DiagnosticLogger.Instance.Dispose();
                 }
                 Disposed = true;

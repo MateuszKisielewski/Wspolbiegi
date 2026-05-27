@@ -15,11 +15,6 @@ using UnderneathLayerAPI = TP.ConcurrentProgramming.Data.DataAbstractAPI;
 
 namespace TP.ConcurrentProgramming.BusinessLogic
 {
-    /// <summary>
-    /// Implementacja warstwy logiki.
-    /// Odpowiada za detekcję i obsługę kolizji kul ze ścianami i innymi kulami.
-    /// Sekcje krytyczne chronią współdzielone dane przed wyścigiem wątków.
-    /// </summary>
     internal class BusinessLogicImplementation : BusinessLogicAbstractAPI
     {
         #region ctor
@@ -27,10 +22,6 @@ namespace TP.ConcurrentProgramming.BusinessLogic
         public BusinessLogicImplementation() : this(null)
         { }
 
-        /// <summary>
-        /// Konstruktor z wstrzykiwaniem zależności (Dependency Injection).
-        /// Umożliwia przekazanie mocka warstwy danych w testach jednostkowych.
-        /// </summary>
         internal BusinessLogicImplementation(UnderneathLayerAPI? underneathLayer)
         {
             layerBellow = underneathLayer ?? UnderneathLayerAPI.GetDataLayer();
@@ -63,11 +54,8 @@ namespace TP.ConcurrentProgramming.BusinessLogic
                     new Position(startingPosition.x, startingPosition.y),
                     logicBall);
 
-                // Rejestracja obsługi zdarzenia - programowanie reaktywne.
-                // Każde nowe położenie kuli wyzwala detekcję kolizji (asynchronicznie).
                 databall.NewPositionNotification += (sender, newPosition) =>
                 {
-                    // Globalny lock zapobiega wyścigowi wątków przy równoczesnej detekcji kolizji
                     lock (_collisionLock)
                     {
                         CheckWallCollisions(databall);

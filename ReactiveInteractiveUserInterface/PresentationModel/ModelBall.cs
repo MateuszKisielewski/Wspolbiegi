@@ -17,11 +17,6 @@ using LogicIBall = TP.ConcurrentProgramming.BusinessLogic.IBall;
 
 namespace TP.ConcurrentProgramming.Presentation.Model
 {
-    /// <summary>
-    /// Kula w warstwie modelu prezentacji.
-    /// Przelicza współrzędne logiczne (400x400) na współrzędne ekranowe (CanvasWidth x CanvasHeight).
-    /// Implementuje INotifyPropertyChanged - zmiana pozycji wyzwala automatyczne odświeżenie widoku (reaktywność WPF).
-    /// </summary>
     internal class ModelBall : IBall
     {
         #region ctor
@@ -32,7 +27,6 @@ namespace TP.ConcurrentProgramming.Presentation.Model
             LeftBackingField = left;
             _baseDiameter = diameter;
 
-            // Subskrypcja zdarzenia z warstwy logiki - programowanie reaktywne
             underneathBall.NewPositionNotification += NewPositionNotification;
         }
 
@@ -62,10 +56,6 @@ namespace TP.ConcurrentProgramming.Presentation.Model
             }
         }
 
-        /// <summary>
-        /// Średnica skalowana do aktualnego rozmiaru canvas.
-        /// Wartości współrzędnych są skalowane do aktualnego rozmiaru ekranu.
-        /// </summary>
         public double Diameter
         {
             get
@@ -89,27 +79,17 @@ namespace TP.ConcurrentProgramming.Presentation.Model
         private double LeftBackingField;
         private readonly double _baseDiameter;
 
-        /// <summary>
-        /// Logiczny rozmiar planszy - taki sam jak BoardWidth/BoardHeight w DataImplementation.
-        /// </summary>
         private const double LogicalBoardSize = 400.0;
 
-        /// <summary>
-        /// Obsługa zdarzenia zmiany pozycji z warstwy logiki.
-        /// Skaluje współrzędne logiczne do rozmiaru ekranu i aktualizuje właściwości.
-        /// Wywoływana z wątku kuli - WPF data binding obsługuje to bezpiecznie przez Dispatcher.
-        /// </summary>
         private void NewPositionNotification(object? sender, IPosition e)
         {
             double scaleX = ModelAbstractApi.CanvasWidth / LogicalBoardSize;
             double scaleY = ModelAbstractApi.CanvasHeight / LogicalBoardSize;
             double diameter = Diameter;
 
-            // Clamp zapobiega wychodzeniu kuli poza obszar canvas
             Left = Math.Clamp(e.x * scaleX, 0, ModelAbstractApi.CanvasWidth - diameter);
             Top = Math.Clamp(e.y * scaleY, 0, ModelAbstractApi.CanvasHeight - diameter);
 
-            // Powiadom o zmianie Diameter gdy zmienił się rozmiar canvas
             RaisePropertyChanged(nameof(Diameter));
         }
 

@@ -12,10 +12,6 @@ using System;
 
 namespace TP.ConcurrentProgramming.BusinessLogic
 {
-    /// <summary>
-    /// Abstrakcyjne API warstwy logiki biznesowej.
-    /// Wyraźnie wydzielona abstrakcja umożliwia niezależne testowanie jednostkowe i wstrzykiwanie zależności (DI).
-    /// </summary>
     public abstract class BusinessLogicAbstractAPI : IDisposable
     {
         #region Layer Factory
@@ -29,16 +25,8 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
         #region Layer API
 
-        /// <summary>
-        /// Wymiary logiczne planszy - niezależne od rozmiaru ekranu.
-        /// Skalowanie do ekranu odbywa się w warstwach wyżej.
-        /// </summary>
         public static readonly Dimensions GetDimensions = new(10.0, 10.0, 10.0);
 
-        /// <summary>
-        /// Uruchamia symulację z podaną liczbą kul.
-        /// upperLayerHandler wywoływany przy każdym nowo dodanym obiekcie kuli.
-        /// </summary>
         public abstract void Start(int numberOfBalls, Action<IPosition, IBall> upperLayerHandler);
 
         #region IDisposable
@@ -57,24 +45,14 @@ namespace TP.ConcurrentProgramming.BusinessLogic
         #endregion private
     }
 
-    /// <summary>
-    /// Niemutowalne wymiary planszy.
-    /// </summary>
     public record Dimensions(double BallDimension, double TableHeight, double TableWidth);
 
-    /// <summary>
-    /// Pozycja kuli w przestrzeni logicznej.
-    /// </summary>
     public interface IPosition
     {
         double x { get; init; }
         double y { get; init; }
     }
 
-    /// <summary>
-    /// Interfejs kuli widoczny dla warstwy prezentacji.
-    /// Zdarzenie NewPositionNotification jest reaktywnym mechanizmem powiadamiania.
-    /// </summary>
     public interface IBall
     {
         event EventHandler<IPosition> NewPositionNotification;

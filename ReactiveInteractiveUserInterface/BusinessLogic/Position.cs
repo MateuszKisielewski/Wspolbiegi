@@ -19,9 +19,6 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
     #endregion IPosition
 
-    /// <summary>
-    /// Creates new instance of <seealso cref="IPosition"/> and initialize all properties
-    /// </summary>
     public Position(double posX, double posY)
     {
       x = posX;
