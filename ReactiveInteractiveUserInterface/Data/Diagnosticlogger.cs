@@ -45,15 +45,16 @@ namespace TP.ConcurrentProgramming.Data
 
         private DiagnosticLogger()
         {
-            _logFilePath = Path.Combine(
-                @"C:\Logs",
-                $"diagnostic_{DateTime.Now:yyyyMMdd_HHmmss}.log");
+            string logDir = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+             "TP_BallSimulator", "Logs");
+            Directory.CreateDirectory(logDir);
+            _logFilePath = Path.Combine(logDir, $"diagnostic_{DateTime.Now:yyyyMMdd_HHmmss}.log");
 
             _buffer = new BlockingCollection<string>(MaxBufferSize);
 
             _writerTask = Task.Run(WriterLoop);
         }
-
         #endregion ctor
 
         #region public API

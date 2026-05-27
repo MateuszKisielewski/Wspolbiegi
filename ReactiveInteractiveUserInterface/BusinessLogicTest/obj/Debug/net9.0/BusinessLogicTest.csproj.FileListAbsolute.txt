@@ -175,3 +175,14 @@ C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\BusinessLog
 C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.pdb
 C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.genruntimeconfig.cache
 C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\ref\BusinessLogicTest.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\bin\Debug\net9.0\.msCoverageSourceRootsMapping_BusinessLogicTest
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\bin\Debug\net9.0\CoverletSourceRootsMapping_BusinessLogicTest
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.csproj.AssemblyReference.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.AssemblyInfoInputs.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.AssemblyInfo.cs
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.sourcelink.json
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\refint\BusinessLogicTest.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\BusinessLogicTest\obj\Debug\net9.0\BusinessLogicTest.pdb

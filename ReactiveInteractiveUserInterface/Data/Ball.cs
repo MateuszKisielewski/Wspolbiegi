@@ -53,23 +53,7 @@ namespace TP.ConcurrentProgramming.Data
 
         public void Move()
         {
-            lock (_positionLock)
-            {
-                double deltaSeconds = _stopwatch.Elapsed.TotalSeconds;
-                _stopwatch.Restart();
-
-                if (deltaSeconds > 0.1) deltaSeconds = 0.1;
-
-                double newX = Position.x + Velocity.x * deltaSeconds;
-                double newY = Position.y + Velocity.y * deltaSeconds;
-                Position.x = newX;
-                Position.y = newY;
-
-                double timestamp = _stopwatch.Elapsed.TotalMilliseconds;
-                DiagnosticLogger.Instance.Log(_ballId, newX, newY, Velocity.x, Velocity.y, timestamp);
-            }
-
-            NewPositionNotification?.Invoke(this, Position);
+            MoveTick(null);
         }
 
         public void SetVelocity(double vx, double vy)
@@ -116,8 +100,7 @@ namespace TP.ConcurrentProgramming.Data
                 Position.x = newX;
                 Position.y = newY;
 
-                double timestamp = _stopwatch.Elapsed.TotalMilliseconds;
-                DiagnosticLogger.Instance.Log(_ballId, newX, newY, Velocity.x, Velocity.y, timestamp);
+                DiagnosticLogger.Instance.Log(_ballId, newX, newY, Velocity.x, Velocity.y, deltaSeconds * 1000.0);
             }
 
             NewPositionNotification?.Invoke(this, Position);

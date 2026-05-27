@@ -180,3 +180,14 @@ C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\Presentatio
 C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.pdb
 C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.genruntimeconfig.cache
 C:\Users\Krzysztof Kata\Desktop\TPW\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\ref\PresentationViewModelTest.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\bin\Debug\net8.0\.msCoverageSourceRootsMapping_PresentationViewModelTest
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\bin\Debug\net8.0\CoverletSourceRootsMapping_PresentationViewModelTest
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.csproj.AssemblyReference.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.AssemblyInfoInputs.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.AssemblyInfo.cs
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.sourcelink.json
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\refint\PresentationViewModelTest.dll
+C:\Users\Krzysztof Kata\Desktop\TPW\Wspolbiegi\ReactiveInteractiveUserInterface\PresentationViewModelTest\obj\Debug\net8.0\PresentationViewModelTest.pdb
